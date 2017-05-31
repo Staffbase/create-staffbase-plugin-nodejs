@@ -1,0 +1,76 @@
+html
+  body
+    h2 User Info
+    table
+      tr
+        td First Name
+        td #{givenName}
+      tr
+        td Last Name
+        td #{familyName}
+      tr
+        td Full Name
+        td #{name}
+      tr
+        td Role
+        td #{role}
+      tr
+        td Locale
+        td #{locale}
+      tr
+        td User ID
+        td #{sub}
+      tr
+        td User External ID
+        td #{externalId}
+      tr
+        td Type
+        td #{type}
+      tr
+        td Tags
+        td #{tags}
+      tr
+        td Editor
+        td #{editor}
+      tr
+        td User
+        td #{user}
+      tr
+        td Theme Text Color
+        td #{themingText}
+        td(width="50", style="background-color: #{themingText}")
+      tr
+        td Theme Background Color
+        td #{themingBg}
+        td(width="50", style="background-color: #{themingBg}")
+    h2 Plugin Info
+    table
+      tr
+        td Instance ID
+        td #{instanceId}
+      tr
+        td Instance Name
+        td #{instanceName}
+    h2 Token Info
+    table
+      tr
+        td Claim Audience
+        td #{aud}
+      tr
+        td Expire At
+        td!=Date(exp).toString()
+        td!=exp
+      tr
+        td Valid Not Before
+        td!=Date(nbf).toString()
+        td!=nbf
+      tr
+        td Issued At
+        td!=Date(iat).toString()
+        td!=iat
+      tr
+        td Issuer
+        td #{iss}
+      tr
+        td Subject
+        td #{sub}
