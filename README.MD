@@ -25,3 +25,6 @@ The directory you specified already exists. It will be overridden, Do you want t
 Setting up your project in:  /private/tmp/staffbase/server
 Installing dependencies...se/server
 ```
+
+## Configuration
+After the scaffolding is complete, you need to provide the values for configuring your 

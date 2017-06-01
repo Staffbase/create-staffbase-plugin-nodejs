@@ -24,7 +24,7 @@ function ssoMiddleWare(secret) {
       	let SSOContents = new StaffBaseSSO(formattedSecret, token);
       	let tokenData = SSOContents.getTokenData();
         req.sbSSO = tokenData;
-        console.log("TokenData:",tokenData)
+        console.log('TokenData:', tokenData);
         return next();
       } catch(tokenErr) {
       	console.log('Error decoding token:', tokenErr);
@@ -32,7 +32,7 @@ function ssoMiddleWare(secret) {
       }
     }
     next();
-  }
+  };
 }
 
 module.exports = ssoMiddleWare;

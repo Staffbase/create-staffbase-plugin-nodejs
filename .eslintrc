@@ -1,0 +1,8 @@
+{
+  "extends": "@staffbase/eslint-config-staffbase",
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "rules": {
+  }
+}

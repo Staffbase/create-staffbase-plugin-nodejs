@@ -9,13 +9,18 @@
     "fs-extra": "^3.0.1",
     "is-relative-path": "^1.0.1",
     "is-valid-path": "^0.1.1",
-    "minimist": "^1.2.0",
     "prompt": "^1.0.0",
-    "validate-npm-package-name": "^3.0.0"
+    "validate-npm-package-name": "^3.0.0",
+    "yargs": "^8.0.1"
   },
   "yargs": {
     "dot-notation": false,
     "parse-numbers": true,
     "boolean-negation": true
+  },
+  "devDependencies": {
+    "@staffbase/eslint-config-staffbase": "^0.1.1",
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.7.1"
   }
 }
