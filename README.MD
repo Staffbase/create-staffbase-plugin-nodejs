@@ -4,19 +4,19 @@
 Install the package in your global namespace and then run the command.
 
 ```bash
-$ npm install -g create-staffbase-sso-server
-$ create-staffbase-sso-server /home/user1/work/staffbase-server/ --name staffbase-sso-server
+$ npm install -g create-staffbase-plugin
+$ create-staffbase-plugin /home/user1/work/staffbase-server/ --name staffbase-sso-server
 ```
 
 You can use `yarn create` to directly run the command
 ```bash
-$ yarn create staffbase-sso-server /home/user1/work/staffbase-server/ --name staffbase-sso-server
+$ yarn create create-staffbase-plugin /home/user1/work/staffbase-server/ --name staffbase-sso-server
 ```
 ## Interactive Mode
 You can also run the command without passing any arguments to get into interactive
 mode which would ask you the name of your app and the path where it need to be installed.
 ```
-$ create-staffbase-sso-server
+$ create-staffbase-plugin
 
 Please enter npm compatible name: (my-staffbase-backend)
 Please enter the folder path for the App: (/private/tmp/staffbase/my-staffbase-backend)
@@ -42,7 +42,7 @@ the values in the `app.js` file where the middleware is initialized.
 To configure values in `app.js` file, change the following lines:
 
 app.js
->```javascript
+```javascript
 12 ...
 13 ...
 14 const staffbaseKey = null;
