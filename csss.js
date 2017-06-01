@@ -119,7 +119,6 @@ function validatePath(path) {
   if (isValidPath(path) === false) {
     return false;
   }
-  // console.log(colors.red('Here now', isValidPath(path)));
   try {
     let fp = filepath.create(path);
     // console.log(colors.yellow(fp));
@@ -135,7 +134,7 @@ function validatePath(path) {
  * if there is some error in copying files.
  */
 function copyContents(dstDir) {
-  // console.log("copyContents");
+  // console.log(colors.blue('Copying from:' + path.resolve(__dirname, './scaffoldTpl')));
   const scaffoldFolder = path.resolve(__dirname, './scaffoldTpl');
   return fs.copy(scaffoldFolder, dstDir);
 }
@@ -179,14 +178,35 @@ function installDeps(dstPath) {
     });
   });
 }
+/**
+ * Removes the targer directory if it exists.
+ * @param  {String} dstPath Path of target directory.
+ * @return {Promise}         Promise resolved when the directory is removed or the directory doesn't exist,
+ * rejected when there is an errer in removing the directory.
+ */
+function removeExistingFolder(dstPath) {
+  let fp = filepath.create(dstPath);
+  if (fp.exists()) {
+    return fs.remove(fp.toString())
+      .then(function() {
+        console.log(colors.red('Removing existing folder and its contents...'));
+        return dstPath;
+      });
+  } else {
+    return Promise.resolve(dstPath);
+  }
+}
 // Run the promise chain for the whole process
 let promptRes = {};
+// promot package name
 promptName(nameParam)
+// prompt file path
 .then(function(pathResp) {
   const nameRecv = pathResp.name;
   Object.assign(promptRes, pathResp);
   return promptPath(nameRecv);
 })
+// remove the folder if it exists
 .then(function(pathResp) {
   if (pathResp.override === 'n' || pathResp.override === 'no') {
     return Promise.reject(console.log(colors.green('Good Bye!')));
@@ -198,14 +218,21 @@ promptName(nameParam)
     pathRecv = path.resolve(path.join(process.cwd(), pathRecv));
     promptRes.path = pathRecv;
   }
+  return removeExistingFolder(pathRecv);
+})
+// copy contents to folder
+.then((pathRecv) => {
   return(copyContents(pathRecv));
 })
+// replace package.json with new one
 .then((res) => {
   return replacePackageJSON(promptRes.path, promptRes.name);
 })
+// install npm dependencies
 .then((res) => {
   return installDeps(promptRes.path);
 })
+// output end results
 .then(function(npmOutput) {
   console.log(colors.yellow(npmOutput));
   console.log(colors.green(`
@@ -214,6 +241,7 @@ Please see the generated README.MD file to get more details about next steps.
 You can find your application template in: ${promptRes.path}.
     `));
 })
+// handle errors if any
 .catch(function(err) {
   if (err.message === 'canceled') {
     return console.log(colors.green('\nGood Bye!'));

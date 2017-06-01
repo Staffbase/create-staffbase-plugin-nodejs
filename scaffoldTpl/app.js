@@ -11,9 +11,11 @@ let users = require('./routes/users');
 let app = express();
 
 const ssoHelpers = require('staffbase-sso').helpers;
-const staffbaseKey = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAofpxzYvjRQz7kuz4hr/YW01b+6EVVnCcUQOikdzoZuOOyD+0ThOCIl/3nfVaF9nbLKMjxwM2ChfVf7lboWb0/7YProoSZ0Hj9YVZoAftZvdHBXOpL4B/XvMu2rCngGQNBiuiiv1sInTugXXu8NKoHj0Vaa2uuO9+dyi6q0qtl15Sa1947GzBHxeowP3ZGgsEDN22giCnPSLdONt/DwX5aafK2oXSqLwpKvIN8TW+e8CLFj5xJtB6gBfyTpGqEeLMHwheT5H5ELpowB4bJFs/u0a4yk5GWX/Rt/gEdPPqLeSsTmLgX8iFa9fQVL3U7ezEbzqs4Rv5HNvs9jE4KitFxwIDAQAB';
-const plguinID = 'christmascalendar';
-let ssoMiddleWare = require('staffbase-sso').middleware(staffbaseKey, plguinID);
+const staffbaseKey = null;
+const plguinID = null;
+let ssoMiddleWare;
+ssoMiddleWare = require('staffbase-sso').middleware(staffbaseKey, plguinID);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,8 +44,6 @@ app.use('/staffbase/sso/backoffice', ssoMiddleWare);
 // Handle SSO response from server with decoded data
 app.get('/staffbase/sso/backoffice', function(req, res) {
   // Middleware was able to decode the token
-  // console.log('Got SSO Request from backend', req.query);
-  console.log('In redirect handler');
   if (req.sbSSO) {
     console.log('Decoded data on backend(admin):', req.sbSSO);
     res.render('plugin', req.sbSSO);

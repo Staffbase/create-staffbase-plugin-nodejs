@@ -1,34 +1,12 @@
-# Create-Staffbase-SSO-CLI Documentation
 ![Staffbase Logo](https://staffbase.com/wp-content/themes/staffbase-theme/img/logo-blau.svg)
-## Getting started
-Install the package in your global namespace and then run the command.
 
-```bash
-$ npm install -g create-staffbase-sso-server
-$ create-staffbase-sso-server /home/user1/work/staffbase-server/ --name staffbase-sso-server
-```
+Welcome to your Staffbase SSO plugin server. Please follow the following instructions
+to get started with your Plugin Application.
 
-You can use `yarn create` to directly run the command
-```bash
-$ yarn create staffbase-sso-server /home/user1/work/staffbase-server/ --name staffbase-sso-server
-```
-## Interactive Mode
-You can also run the command without passing any arguments to get into interactive
-mode which would ask you the name of your app and the path where it need to be installed.
-```
-$ create-staffbase-sso-server
+## Prerequisites
+In order to get connected with the Staffbase SSO interface, you need a Valid key and a Plugin ID.
 
-Please enter npm compatible name: (my-staffbase-backend)
-Please enter the folder path for the App: (/private/tmp/staffbase/my-staffbase-backend)
-The directory you specified already exists. It will be overridden!
-Do you wish to proceed (y)es|(n)o?: (no)
-
-Setting up your project in:  /private/tmp/staffbase/server
-Installing dependencies...se/server
-```
-
-On entering the path, you can either specify an absolute path or a relative path. The relative path is resolved against the current working directory (`process.cwd()`).
-
+If you are here you probably have a secret key and a plugin ID registered on Staffbase server. If you are not sure about it or you need more information about SSO feel free to contact the Customer Success team at Staffbase
 ## Configuration
 After the scaffolding is complete, you need to provide some values for configuring your
 plugin server. The following values need to be configured.
@@ -67,3 +45,8 @@ folder where your app was generated and start the express server.
 $ cd [path of generated app]
 $ npm start
 ```
+## Further Reading
+For getting more information about Staffbase SSO, please check out the following links:
+
+- [About Staffbase Plugin SSO](http://developers.staffbase.com/api/plugin-sso/)
+- [Staffbase Nodejs Plugin Documentation](www.github.com/staffbase/plugins-sdknodejs/master/README.MD)
