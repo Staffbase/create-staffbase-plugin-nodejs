@@ -1,6 +1,5 @@
 #! /usr/bin/env node
 'use strict';
-
 let fs = require('fs-extra');
 let path = require('path');
 let yargv = require('yargs');
@@ -9,51 +8,33 @@ const execFile = require('child_process').execFile;
 const prompt = require('prompt');
 const filepath = require('filepath');
 const isValidPath = require('is-valid-path');
-const isRelativePath = require('is-relative-path');
+const isRelativePath = require('is-relative');
 const colors = require('colors/safe');
-const util = require('util');
 
 // configure prompt
 prompt.message = '';
 prompt.delimiter = colors.green(':');
-
+// set default values
 const defaultNPMName = 'my-staffbase-backend';
-
 const scaffoldFolder = path.resolve(__dirname, './scaffoldTpl');
 
 yargv
   .usage('Usage: create-staffbase-sso-server <project-directory> [Options]')
-  // .command('<path>', 'Create a sample server for Staffbase-SSO', function(yargs) {
-  //   return yargs.option('name')
-  // })
-  // .describe('<path>', 'Path where the template would be generated')
-  // .default('_.0', process.cwd(), 'Current working directory')
   .alias('name', 'N')
-  .default('name', defaultNPMName)
   .string('name')
-  // .nargs('name', 1)
   .describe('name', 'a sepcific package.json name of your app')
   .version('0.0.1')
   .help('help')
   .epilogue(`for more information,\please see the README at:
     http://www.github.com/Staffbase/create-staffbase-sso-server/master/README.MD`);
-
-// console.log('YARGS Parsed Data:\n', util.inspect(yargv.argv, {colors: true}));
-
+// console.log('YARGS Parsed Data:\n', yargv.argv);
 let packageJSON = fs.readJSONSync(path.join(scaffoldFolder, 'package.json'));
-
-// const defaultNPMName = process.cwd().substr(process.cwd().lastIndexOf('/') + 1);
-
 // Defaults package name to current folder name
 let nameParam = yargv.argv.N || yargv.argv.name || defaultNPMName;
-
-// console.log('Default name param:', nameParam);
-// console.log('Default Path:', passedPath);
 prompt.override = {
   name: yargv.argv.N,
   path: yargv.argv._[0],
 };
-
 /**
  * Prompts user for just the npm name value.
  * @param  {String} name name of app in package.json
@@ -84,7 +65,6 @@ function promptName(name) {
     });
   });
 }
-
 /**
  * Prompt path and ask to override folder if it exists
  * @param {String} promtedName
@@ -130,63 +110,6 @@ function promptPath(promtedName) {
   });
 }
 /**
- * Prompt cli options from user if not provided in args.
- * @param  {String} dstPath The file Path where app is to be generated
- * @param  {String} name name of app in package.json
- * @return {Promise}      Promise resolved when entered values are correct
- */
-function promptOptions(dstPath, name) {
-  const promptSchema = {
-    properties: {
-      name: {
-        description: 'What is the npm name of your plugin?',
-        type: 'string',
-        default: name,
-        message: 'Name must be npm.js compatible',
-        required: true,
-        conform: function(value) {
-          return validateNPM(value).validForNewPackages;
-        },
-      },
-      path: {
-        description: 'Please enter the folder path for the App',
-        type: 'string',
-        message:
-          'Entered path is invalid or an already present file on the File System. Please enter a correct filepath,',
-        default: getDefPath(prompt.history, dstPath),
-        required: true,
-        conform: validatePath,
-      },
-      override: {
-        message:
-          colors.yellow('The directory you specified already exists. It directory will be overridden!')
-            + '\nDo you wish to proceed (y)es|(n)o?',
-        validator: /y[es]*|n[o]?/,
-        warning: 'Must respond yes or no',
-        default: 'yes',
-        ask: function() {
-          let chkPath = dstPath;
-          if (prompt.history('path')) {
-            chkPath = prompt.history('path').value;
-          }
-          return filepath.create(chkPath).exists();
-        },
-      },
-    },
-  };
-  return new Promise( function(resolve, reject) {
-    prompt.start()
-    .get(promptSchema, function(err, res) {
-      // console.log('PROMPT OUTPUT:\n', err, res);
-      if (err) {
-        return reject(err);
-      }
-      return resolve(res);
-    });
-  });
-}
-
-/**
  * Checks if the path specified is valid for setting up the template.
  * Valid means if the path is a valid path and it is not a File (not a folder).
  * @param {String}  path  The path to be checked
@@ -205,7 +128,6 @@ function validatePath(path) {
     console.log(err);
   }
 }
-
 /**
  * Copy contants from the Scaffold Template to the specified folder
  * @param  {String} dstDir THe destination directory where files are to be copied
@@ -242,7 +164,7 @@ function replacePackageJSON(dstPath, nameVal) {
  * @return {Promise}      Promise resolved when the packages are successfulyl installed.
  */
 function installDeps(dstPath) {
-  console.log('Installing dependencies...');
+  console.log(colors.italic('\nInstalling dependencies...'));
   const opts = {
     cwd: path.resolve(dstPath),
   };
@@ -251,17 +173,14 @@ function installDeps(dstPath) {
       // console.log(colors.red('Inside Child result', stderr, stdout, err));
       if (err) {
         // console.log(colors.red(err));
-        reject(err);
-      } else {
-        // console.log(colors.green('Inside Child result', stderr, stdout, err));
-        resolve(stdout);
+        return reject(err);
       }
+      return resolve(stdout);
     });
   });
 }
-
-let promptRes = {};
 // Run the promise chain for the whole process
+let promptRes = {};
 promptName(nameParam)
 .then(function(pathResp) {
   const nameRecv = pathResp.name;
@@ -273,16 +192,28 @@ promptName(nameParam)
     return Promise.reject(console.log(colors.green('Good Bye!')));
   }
   Object.assign(promptRes, pathResp);
-  const pathRecv = pathResp.path;
+  let pathRecv = pathResp.path;
+  // if the entered path is relative, resolve to absolute
+  if (isRelativePath(pathRecv)) {
+    pathRecv = path.resolve(path.join(process.cwd(), pathRecv));
+    promptRes.path = pathRecv;
+  }
   return(copyContents(pathRecv));
 })
 .then((res) => {
-  return replacePackageJSON(promptRes.path, promptRes);
+  return replacePackageJSON(promptRes.path, promptRes.name);
 })
 .then((res) => {
   return installDeps(promptRes.path);
 })
-.then(console.log)
+.then(function(npmOutput) {
+  console.log(colors.yellow(npmOutput));
+  console.log(colors.green(`
+Your application setup is complete!
+Please see the generated README.MD file to get more details about next steps.
+You can find your application template in: ${promptRes.path}.
+    `));
+})
 .catch(function(err) {
   if (err.message === 'canceled') {
     return console.log(colors.green('\nGood Bye!'));

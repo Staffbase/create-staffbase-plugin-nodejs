@@ -7,7 +7,7 @@
     "colors": "^1.1.2",
     "filepath": "^1.1.0",
     "fs-extra": "^3.0.1",
-    "is-relative-path": "^1.0.1",
+    "is-relative": "^0.2.1",
     "is-valid-path": "^0.1.1",
     "prompt": "^1.0.0",
     "validate-npm-package-name": "^3.0.0",
