@@ -33,8 +33,8 @@ Refer to the table to see which environment variables can be used.
 
 |   *Value*   |   *Environment Variable*    |
 |:------------|:--------------------------: |
-|Secret       |SECRET_ENV_VAR               |
-|Audience     |AUD_ENV_VAR                  |
+|Secret       |STAFFBASE_SSO_SECRET         |
+|Audience     |STAFFBASE_SSO_AUDIENCE       |
 |Server Port  |PORT                         |
 
 ## Running the server
