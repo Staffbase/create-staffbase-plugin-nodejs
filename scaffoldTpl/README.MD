@@ -4,14 +4,14 @@ Welcome to your Staffbase SSO plugin server. Please follow the following instruc
 to get started with your Plugin Application.
 
 ## Prerequisites
-In order to get connected with the Staffbase SSO interface, you need a Valid key and a Plugin ID.
+In order to get connected with the Staffbase SSO interface, you need a Valid Secret and an Audience ID.
 
-If you are here you probably have a secret key and a plugin ID registered on Staffbase server. If you are not sure about it or you need more information about SSO feel free to contact the Customer Success team at Staffbase
+If you are here, you probably have a secret and audience ID registered with Staffbase. If you are not sure about it or you need more information about Staffbase SSO, feel free to contact the Customer Success team at Staffbase.
 ## Configuration
 After the scaffolding is complete, you need to provide some values for configuring your
 plugin server. The following values need to be configured.
 
-- Plugin Secret Key
+- Plugin Secret
 - Plugin Audience
 
 You can either specify these values in environment variables or directly passing
@@ -20,11 +20,11 @@ the values in the `app.js` file where the middleware is initialized.
 To configure values in `app.js` file, change the following lines:
 
 app.js
->```javascript
+```javascript
 12 ...
 13 ...
-14 const staffbaseKey = null;
-15 const plguinID = null;
+14 const key = null;
+15 const pluginID = null;
 16 ...
 ```
 
@@ -33,12 +33,12 @@ Refer to the table to see which environment variables can be used.
 
 |   *Value*   |   *Environment Variable*    |
 |:------------|:--------------------------: |
-|Plugin Secret|STAFFBASE_SSO_SECRET         |
-|Plugin ID    |STAFFBASE_SSO_AUDIENCE       |
+|Secret       |STAFFBASE_SSO_SECRET         |
+|Audience     |STAFFBASE_SSO_AUDIENCE       |
 |Server Port  |PORT                         |
 
 ## Running the server
-_create-staffbase-sso-server_ installs the project dependencies for you.
+_create-staffbase-plugin_ installs the project dependencies for you.
 After configurations is done, the only thing you need to do is navigate to the
 folder where your app was generated and start the express server.
 ```bash

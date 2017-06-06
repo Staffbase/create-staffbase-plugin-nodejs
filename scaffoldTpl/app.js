@@ -10,11 +10,11 @@ let users = require('./routes/users');
 
 let app = express();
 
-const ssoHelpers = require('staffbase-sdk').helpers;
+const ssoHelpers = require('staffbase-plugin-sdk').helpers;
 const staffbaseKey = null;
 const plguinID = null;
 let ssoMiddleWare;
-ssoMiddleWare = require('staffbase-sdk').middleware(staffbaseKey, plguinID);
+ssoMiddleWare = require('staffbase-plugin-sdk').middleware(staffbaseKey, plguinID);
 
 
 // view engine setup
