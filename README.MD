@@ -8,9 +8,12 @@ $ npm install -g create-staffbase-plugin
 $ create-staffbase-plugin /home/user1/work/staffbase-server/ --name staffbase-sso-server
 ```
 
-You can use `yarn create` to directly run the command
+You can use `yarn create` to directly run the command. The syntax of `yarn create staffbase-plugin` is:
+> yarn create staffbase-plugin [Destination folder] --name [Plugin Name]
+
+Example:
 ```bash
-$ yarn create create-staffbase-plugin /home/user1/work/staffbase-server/ --name staffbase-sso-server
+$ yarn create staffbase-plugin /home/user1/work/staffbase-server/ --name staffbase-sso-server
 ```
 ## Interactive Mode
 You can also run the command without passing any arguments to get into interactive
@@ -33,7 +36,7 @@ On entering the path, you can either specify an absolute path or a relative path
 After the scaffolding is complete, you need to provide some values for configuring your
 plugin server. The following values need to be configured.
 
-- Plugin Secret Key
+- Plugin Secret
 - Plugin Audience
 
 You can either specify these values in environment variables or directly passing
@@ -45,8 +48,8 @@ app.js
 ```javascript
 12 ...
 13 ...
-14 const staffbaseKey = null;
-15 const plguinID = null;
+14 const key = null;
+15 const pluginID = null;
 16 ...
 ```
 
@@ -55,12 +58,12 @@ Refer to the table to see which environment variables can be used.
 
 |   *Value*   |   *Environment Variable*    |
 |:------------|:--------------------------: |
-|Plugin Secret|STAFFBASE_SSO_SECRET         |
-|Plugin ID    |STAFFBASE_SSO_AUDIENCE       |
+|Secret       |SECRET_ENV_VAR               |
+|Audience     |AUD_ENV_VAR                  |
 |Server Port  |PORT                         |
 
 ## Running the server
-_create-staffbase-sso-server_ installs the project dependencies for you.
+_create-staffbase-plugin_ installs the project dependencies for you.
 After configurations is done, the only thing you need to do is navigate to the
 folder where your app was generated and start the express server.
 ```bash
