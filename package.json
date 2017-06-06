@@ -13,6 +13,10 @@
     "validate-npm-package-name": "^3.0.0",
     "yargs": "^8.0.1"
   },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/Staffbase/create-staffbase-plugin-nodejs"
+  },
   "scripts": {
     "test": "jest",
     "buildDoc": "node scripts/genDoc",
@@ -24,8 +28,8 @@
     "boolean-negation": true
   },
   "devDependencies": {
-    "markdown-it": "^8.3.1",
     "highlight.js": "^9.12.0",
+    "markdown-it": "^8.3.1",
     "@staffbase/eslint-config-staffbase": "^0.1.1",
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.7.1",
