@@ -7,10 +7,8 @@
     "colors": "^1.1.2",
     "filepath": "^1.1.0",
     "fs-extra": "^3.0.1",
-    "highlight.js": "^9.12.0",
     "is-relative": "^0.2.1",
     "is-valid-path": "^0.1.1",
-    "markdown-it": "^8.3.1",
     "prompt": "^1.0.0",
     "validate-npm-package-name": "^3.0.0",
     "yargs": "^8.0.1"
@@ -26,6 +24,8 @@
     "boolean-negation": true
   },
   "devDependencies": {
+    "markdown-it": "^8.3.1",
+    "highlight.js": "^9.12.0",
     "@staffbase/eslint-config-staffbase": "^0.1.1",
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.7.1",
