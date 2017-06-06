@@ -20,7 +20,7 @@
   "scripts": {
     "test": "jest",
     "buildDoc": "node scripts/genDoc",
-    "precommit": "npm run buildDoc"
+    "precommit": "npm run buildDoc && git add scaffoldTpl/views/index.html"
   },
   "yargs": {
     "dot-notation": false,
