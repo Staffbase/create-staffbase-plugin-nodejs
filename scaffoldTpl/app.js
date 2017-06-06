@@ -10,7 +10,6 @@ let users = require('./routes/users');
 
 let app = express();
 
-const ssoHelpers = require('staffbase-plugin-sdk').helpers;
 const staffbaseKey = null;
 const pluginID = null;
 let ssoMiddleWare;
