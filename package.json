@@ -1,7 +1,6 @@
 {
   "name": "@staffbase/create-staffbase-plugin",
-  "version": "0.0.1",
-  "private": true,
+  "version": "1.0.0",
   "bin": "./csss.js",
   "dependencies": {
     "colors": "^1.1.2",
