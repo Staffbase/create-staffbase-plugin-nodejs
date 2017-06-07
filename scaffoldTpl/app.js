@@ -13,7 +13,7 @@ let app = express();
 const staffbaseKey = null;
 const pluginID = null;
 let ssoMiddleWare;
-ssoMiddleWare = require('staffbase-plugin-sdk').middleware(staffbaseKey, pluginID);
+ssoMiddleWare = require('@staffbase/staffbase-plugin-sdk').middleware(staffbaseKey, pluginID);
 
 
 // view engine setup
