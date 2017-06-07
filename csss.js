@@ -250,3 +250,7 @@ You can find your application template in: ${promptRes.path}.
     console.log('An error occured.', err);
   }
 });
+
+module.exports = {
+  validatePath: validatePath,
+};
