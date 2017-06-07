@@ -7,7 +7,7 @@ const validateNPM = require('validate-npm-package-name');
 const execFile = require('child_process').execFile;
 const prompt = require('prompt');
 const filepath = require('filepath');
-const isValidPath = require('is-valid-path');
+const validatePath = require('./lib/helpers').validatePath;
 const isRelativePath = require('is-relative');
 const colors = require('colors/safe');
 
@@ -109,24 +109,7 @@ function promptPath(promtedName) {
     });
   });
 }
-/**
- * Checks if the path specified is valid for setting up the template.
- * Valid means if the path is a valid path and it is not a File (not a folder).
- * @param {String}  path  The path to be checked
- * @return {Boolean}
- */
-function validatePath(path) {
-  if (isValidPath(path) === false) {
-    return false;
-  }
-  try {
-    let fp = filepath.create(path);
-    // console.log(colors.yellow(fp));
-    return !(fp.isFile());
-  } catch (err) {
-    console.log(err);
-  }
-}
+
 /**
  * Copy contants from the Scaffold Template to the specified folder
  * @param  {String} dstDir THe destination directory where files are to be copied
@@ -250,3 +233,7 @@ You can find your application template in: ${promptRes.path}.
     console.log('An error occured.', err);
   }
 });
+
+module.exports = {
+  validatePath: validatePath,
+};

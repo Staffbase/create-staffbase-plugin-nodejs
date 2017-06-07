@@ -49,4 +49,4 @@ $ npm start
 For getting more information about Staffbase SSO, please check out the following links:
 
 - [About Staffbase Plugin SSO](http://developers.staffbase.com/api/plugin-sso/)
-- [Staffbase Nodejs Plugin Documentation](www.github.com/staffbase/plugins-sdknodejs/master/README.MD)
+- [Staffbase Nodejs Plugin Documentation](www.github.com/staffbase/plugins-sdk-nodejs/master/README.MD)
