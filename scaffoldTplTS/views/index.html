@@ -1,0 +1,60 @@
+<p><img src="https://staffbase.com/wp-content/themes/staffbase-theme/img/logo-blau.svg" alt="Staffbase Logo"></p>
+<p>Welcome to your Staffbase SSO plugin server. Please follow the following instructions
+to get started with your Plugin Application.</p>
+<h2>Prerequisites</h2>
+<p>In order to get connected with the Staffbase SSO interface, you need a Valid Secret and an Audience ID.</p>
+<p>If you are here, you probably have a secret and audience ID registered with Staffbase. If you are not sure about it or you need more information about Staffbase SSO, feel free to contact the Customer Success team at Staffbase.</p>
+<h2>Configuration</h2>
+<p>After the scaffolding is complete, you need to provide some values for configuring your
+plugin server. The following values need to be configured.</p>
+<ul>
+<li>Plugin Secret</li>
+<li>Plugin Audience</li>
+</ul>
+<p>You can either specify these values in environment variables or directly passing
+the values in the <code>app.js</code> file where the middleware is initialized.</p>
+<p>To configure values in <code>app.js</code> file, change the following lines:</p>
+<p>app.js</p>
+<pre><code class="language-javascript"><span class="hljs-number">12</span> ...
+<span class="hljs-number">13</span> ...
+<span class="hljs-number">14</span> <span class="hljs-keyword">const</span> key = <span class="hljs-literal">null</span>;
+<span class="hljs-number">15</span> <span class="hljs-keyword">const</span> pluginID = <span class="hljs-literal">null</span>;
+<span class="hljs-number">16</span> ...
+</code></pre>
+<p>You can also specify these values using environment variables.
+Refer to the table to see which environment variables can be used.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><em>Value</em></th>
+<th style="text-align:center"><em>Environment Variable</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Secret</td>
+<td style="text-align:center">STAFFBASE_SSO_SECRET</td>
+</tr>
+<tr>
+<td style="text-align:left">Audience</td>
+<td style="text-align:center">STAFFBASE_SSO_AUDIENCE</td>
+</tr>
+<tr>
+<td style="text-align:left">Server Port</td>
+<td style="text-align:center">PORT</td>
+</tr>
+</tbody>
+</table>
+<h2>Running the server</h2>
+<p><em>create-staffbase-plugin</em> installs the project dependencies for you.
+After configurations is done, the only thing you need to do is navigate to the
+folder where your app was generated and start the express server.</p>
+<pre><code class="language-bash">$ <span class="hljs-built_in">cd</span> [path of generated app]
+$ npm start
+</code></pre>
+<h2>Further Reading</h2>
+<p>For getting more information about Staffbase SSO, please check out the following links:</p>
+<ul>
+<li><a href="https://developers.staffbase.com/api/plugin-sso/">About Staffbase Plugin SSO</a></li>
+<li><a href="https://www.github.com/staffbase/plugins-sdk-nodejs/master/README.MD">Staffbase Nodejs Plugin Documentation</a></li>
+</ul>

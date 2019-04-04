@@ -6,8 +6,7 @@
 Install the package in your global namespace and then run the command.
 
 ```bash
-$ npm install -g @staffbase/create-staffbase-plugin
-$ create-staffbase-plugin /home/user1/work/staffbase-server/ --name staffbase-sso-server
+$ npx create-staffbase-plugin /home/user1/staffbase-server/ --name staffbase-sso-server
 ```
 
 You can use `yarn create` to directly run the command. The syntax of `yarn create staffbase-plugin` is:

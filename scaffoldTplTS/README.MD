@@ -1,0 +1,76 @@
+![Staffbase Logo](https://staffbase.com/wp-content/themes/staffbase-theme/img/logo-blau.svg)
+
+Welcome to your Staffbase SSO plugin server. Please follow the following instructions
+to get started with your Plugin Application.
+
+## Prerequisites
+In order to get connected with the Staffbase SSO interface, you need a Valid Secret and an Audience ID.
+
+If you are here, you probably have a secret and audience ID registered with Staffbase. If you are not sure about it or you need more information about Staffbase SSO, feel free to contact the Customer Success team at Staffbase.
+## Configuration
+After the scaffolding is complete, you need to provide some values for configuring your
+plugin server. The following values need to be configured.
+
+- Plugin Secret
+- Plugin Audience
+
+You can either specify these values in environment variables or directly passing
+the values in the `app.ts` file where the middleware is initialized.
+
+To configure values in `app.ts` file, change the following lines:
+
+app.js
+```javascript
+12 ...
+13 ...
+14 const key = null;
+15 const pluginID = null;
+16 ...
+```
+
+You can also specify these values using environment variables.
+Refer to the table to see which environment variables can be used.
+
+|   *Value*   |   *Environment Variable*    |
+|:------------|:--------------------------: |
+|Secret       |STAFFBASE_SSO_SECRET         |
+|Audience     |STAFFBASE_SSO_AUDIENCE       |
+|Server Port  |PORT                         |
+|Server Host  |HOST                         |
+
+## Running the server
+_create-staffbase-plugin_ installs the project dependencies for you.
+After configurations is done, the only thing you need to do is navigate to the
+folder where your app was generated and start the express server.
+
+Use the following commands to build and run your server:
+```bash
+$ npm run build-ts
+$ npm start
+```
+
+## Additional NPM commands
+The package provides some npm commands which can be used to start /  build the server.
+
+### Build Server
+Runs the typescript compiler to build the server. The build files are stored in `dist` folder  
+```bash
+$ npm run build-ts
+```
+### Start server
+Starts the server from the last generated build version.
+```bash
+$ npm start
+```
+
+### Run TSLint
+Runs TSLint and shows errors in typescript code.
+```bash
+$ npm run tslint
+```
+
+## Further Reading
+For getting more information about Staffbase SSO, please check out the following links:
+
+- [About Staffbase Plugin SSO](https://developers.staffbase.com/api/plugin-sso/)
+- [Staffbase Nodejs Plugin Documentation](https://www.github.com/staffbase/plugins-sdk-nodejs/master/README.MD)
