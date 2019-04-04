@@ -24,6 +24,9 @@ yargv
     .alias('name', 'N')
     .string('name')
     .describe('name', 'a specific package.json name of your app')
+    .boolean('typescript')
+    .describe('typescript', 'Generate the project with typescript support')
+    .alias('typescript', 'T')
     .version('0.0.1')
     .help('help')
     .epilogue(`for more information, please see the README at:
@@ -32,9 +35,11 @@ const packageJSON = fs.readJSONSync(path.join(scaffoldFolder, 'package.json'));
 const packageJsonTS = fs.readJSONSync(path.join(scaffoldFolderTS, 'package.json'));
 // Defaults package name to current folder name
 const nameParam = yargv.argv.N || yargv.argv.name || defaultNPMName;
+const typeScriptParam = yargv.argv.T || yargv.argv.typescript;
 prompt.override = {
   name: yargv.argv.N,
   path: yargv.argv._[0],
+  isTypescript: yargv.argv.T,
 };
 /**
  * Prompts user for just the npm name value.
@@ -111,44 +116,59 @@ function promptPath(promtedName) {
   });
 }
 
-function promptIsTypescript(isTypescript) {
+/**
+ *
+ * @param {Boolean} isTypescript - Default value of flag
+ * @return {Promise<any>}
+ */
+function promptIsTypescript(isTypescript = false) {
   const promptIsTypescriptSchema = {
     properties: {
       isTypescript: {
         description: 'Do you want a typescript ready project?',
         type: 'boolean',
-        default: false,
-        required: true
+        default: isTypescript,
+        required: true,
       },
-    }
-  }
+    },
+  };
+  return new Promise(function(resolve, reject) {
+    prompt.get(promptIsTypescriptSchema, function(err, res) {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(res);
+    });
+  });
 }
 
 /**
  * Copy content from the Scaffold Template to the specified folder
- * @param  {String} dstDir THe destination directory where files are to be copied
+ * @param {String} dstDir The destination directory where files are to be copied
+ * @param {Boolean} isTypescript - Copy typescript files instead of js
  * @return {Promise}    Promise resolved when the copy process is complete. Rejected
  * if there is some error in copying files.
  */
-function copyContents(dstDir) {
+function copyContents(dstDir, isTypescript) {
+  const copyFrom = isTypescript? scaffoldFolderTS :scaffoldFolder;
   // console.log(colors.blue('Copying from:' + path.resolve(__dirname, './scaffoldTpl')));
-  const scaffoldFolder = path.resolve(__dirname, './scaffoldTpl');
-  return fs.copy(scaffoldFolder, dstDir);
+  return fs.copy(copyFrom, dstDir);
 }
 /**
- * Repace the package.json file from copied fromplate to the new generated one.
+ * Repace the package.json file from copied from template to the new generated one.
  * @return {Promise} Promise resolved when the Package.json is successfully replaced.
  * @param {String}  dstPath  The path of the folder where the package.json needs to be replaced
  * @param {String}  nameVal name value that should be replaced
+ * @param {Boolean} isTypescript - Copy typescript files instead of js
  * Rejected if there is some error in creating new Package.json file.
  */
-function replacePackageJSON(dstPath, nameVal) {
-  // console.log("replacePackageJSON");
-  const newPackageJSON = Object.assign({}, packageJSON, {name: nameVal});
+function replacePackageJSON(dstPath, nameVal, isTypescript = false) {
+  const packageJsonContent = isTypescript? packageJsonTS : packageJSON;
+  const newPackageJSON = Object.assign({}, packageJsonContent, {name: nameVal});
   const curDir = path.resolve(dstPath);
   const packagePath = path.resolve(path.join(curDir, 'package.json'));
   return fs.remove(packagePath)
-      .then(function(data) {
+      .then(function() {
         // console.log(colors.yellow('Writing json...'));
         return fs.writeJson(packagePath, newPackageJSON, {spaces: 2});
       });
@@ -165,7 +185,7 @@ function installDeps(dstPath) {
     cwd: path.resolve(dstPath),
   };
   return new Promise( (resolve, reject) => {
-    execFile('npm', ['install'], opts, (err, stdout, stderr) => {
+    execFile('npm', ['install'], opts, (err, stdout) => {
       // console.log(colors.red('Inside Child result', stderr, stdout, err));
       if (err) {
         // console.log(colors.red(err));
@@ -175,7 +195,6 @@ function installDeps(dstPath) {
     });
   });
 }
-
 
 
 /**
@@ -203,20 +222,21 @@ function removeExistingFolder(dstPath) {
  */
 const startPrompt = async () => {
   try {
-    let promptRes = {};
+    const promptRes = {};
     const {name} = await promptName(nameParam);
     promptRes.name = name;
     const {override, path} = await promptPath(name);
     if (override === 'n' || override === 'no') {
       return Promise.reject(console.log(colors.green('Good Bye!')));
     }
+    const {isTypescript} = await promptIsTypescript(typeScriptParam);
     promptRes.path = path;
     if (isRelativePath(path)) {
       promptRes.path = path.resolve(path.join(process.cwd(), path));
     }
     await removeExistingFolder(promptRes.path);
-    await copyContents(promptRes.path);
-    await replacePackageJSON(promptRes.path, name);
+    await copyContents(promptRes.path, isTypescript);
+    await replacePackageJSON(promptRes.path, name, isTypescript);
     const npmOutput = await installDeps(promptRes.path);
     console.log(colors.yellow(npmOutput));
     console.log(colors.green(`
