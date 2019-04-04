@@ -17,6 +17,7 @@ prompt.delimiter = colors.green(':');
 // set default values
 const defaultNPMName = 'my-staffbase-backend';
 const scaffoldFolder = path.resolve(__dirname, './scaffoldTpl');
+const scaffoldFolderTS = path.resolve(__dirname, './scaffoldTplTS');
 
 yargv
     .usage('Usage: create-staffbase-sso-server <project-directory> [Options]')
@@ -28,6 +29,7 @@ yargv
     .epilogue(`for more information, please see the README at:
     http://www.github.com/Staffbase/create-staffbase-sso-server/master/README.MD`);
 const packageJSON = fs.readJSONSync(path.join(scaffoldFolder, 'package.json'));
+const packageJsonTS = fs.readJSONSync(path.join(scaffoldFolderTS, 'package.json'));
 // Defaults package name to current folder name
 const nameParam = yargv.argv.N || yargv.argv.name || defaultNPMName;
 prompt.override = {
@@ -84,7 +86,7 @@ function promptPath(promtedName) {
       },
       override: {
         message:
-          colors.yellow('The directory you specified already exists. It directory will be overridden!')
+          colors.yellow('The directory you specified already exists. It will be overridden!')
             + '\nDo you wish to proceed (y)es|(n)o?',
         validator: /y[es]*|n[o]?/,
         warning: 'Must respond yes or no',
@@ -109,8 +111,21 @@ function promptPath(promtedName) {
   });
 }
 
+function promptIsTypescript(isTypescript) {
+  const promptIsTypescriptSchema = {
+    properties: {
+      isTypescript: {
+        description: 'Do you want a typescript ready project?',
+        type: 'boolean',
+        default: false,
+        required: true
+      },
+    }
+  }
+}
+
 /**
- * Copy contants from the Scaffold Template to the specified folder
+ * Copy content from the Scaffold Template to the specified folder
  * @param  {String} dstDir THe destination directory where files are to be copied
  * @return {Promise}    Promise resolved when the copy process is complete. Rejected
  * if there is some error in copying files.
@@ -160,11 +175,14 @@ function installDeps(dstPath) {
     });
   });
 }
+
+
+
 /**
- * Removes the targer directory if it exists.
+ * Removes the target directory if it exists.
  * @param  {String} dstPath Path of target directory.
  * @return {Promise}         Promise resolved when the directory is removed or the directory doesn't exist,
- * rejected when there is an errer in removing the directory.
+ * rejected when there is an error in removing the directory.
  */
 function removeExistingFolder(dstPath) {
   const fp = filepath.create(dstPath);
@@ -178,60 +196,44 @@ function removeExistingFolder(dstPath) {
     return Promise.resolve(dstPath);
   }
 }
-// Run the promise chain for the whole process
-const promptRes = {};
-// promot package name
-promptName(nameParam)
-// prompt file path
-    .then(function(pathResp) {
-      const nameRecv = pathResp.name;
-      Object.assign(promptRes, pathResp);
-      return promptPath(nameRecv);
-    })
-// remove the folder if it exists
-    .then(function(pathResp) {
-      if (pathResp.override === 'n' || pathResp.override === 'no') {
-        return Promise.reject(console.log(colors.green('Good Bye!')));
-      }
-      Object.assign(promptRes, pathResp);
-      let pathRecv = pathResp.path;
-      // if the entered path is relative, resolve to absolute
-      if (isRelativePath(pathRecv)) {
-        pathRecv = path.resolve(path.join(process.cwd(), pathRecv));
-        promptRes.path = pathRecv;
-      }
-      return removeExistingFolder(pathRecv);
-    })
-// copy contents to folder
-    .then((pathRecv) => {
-      return (copyContents(pathRecv));
-    })
-// replace package.json with new one
-    .then((res) => {
-      return replacePackageJSON(promptRes.path, promptRes.name);
-    })
-// install npm dependencies
-    .then((res) => {
-      return installDeps(promptRes.path);
-    })
-// output end results
-    .then(function(npmOutput) {
-      console.log(colors.yellow(npmOutput));
-      console.log(colors.green(`
+
+/**
+ *
+ * @return {Promise<void>}
+ */
+const startPrompt = async () => {
+  try {
+    let promptRes = {};
+    const {name} = await promptName(nameParam);
+    promptRes.name = name;
+    const {override, path} = await promptPath(name);
+    if (override === 'n' || override === 'no') {
+      return Promise.reject(console.log(colors.green('Good Bye!')));
+    }
+    promptRes.path = path;
+    if (isRelativePath(path)) {
+      promptRes.path = path.resolve(path.join(process.cwd(), path));
+    }
+    await removeExistingFolder(promptRes.path);
+    await copyContents(promptRes.path);
+    await replacePackageJSON(promptRes.path, name);
+    const npmOutput = await installDeps(promptRes.path);
+    console.log(colors.yellow(npmOutput));
+    console.log(colors.green(`
 Your application setup is complete!
 Please see the generated README.MD file to get more details about next steps.
 You can find your application template in: ${promptRes.path}.
     `));
-    })
-// handle errors if any
-    .catch(function(err) {
-      if (err.message === 'canceled') {
-        return console.log(colors.green('\nGood Bye!'));
-      }
-      if (err.message) {
-        console.log('An error occured.', err);
-      }
-    });
+  } catch (err) {
+    if (err.message === 'canceled') {
+      return console.log(colors.green('\nGood Bye!'));
+    }
+    if (err.message) {
+      console.log('An error occurred.', err);
+    }
+  }
+};
+startPrompt();
 
 module.exports = {
   validatePath: validatePath,
