@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Staffbase/create-staffbase-plugin-nodejs.svg?branch=master)](https://travis-ci.org/Staffbase/create-staffbase-plugin-nodejs)
+[![Build Status](https://travis-ci.org/Staffbase/create-staffbase-plugin-nodejs.svg?branch=master)](https://travis-ci.org/Staffbase/create-staffbase-plugin-nodejs) [![Greenkeeper badge](https://badges.greenkeeper.io/Staffbase/create-staffbase-plugin-nodejs.svg)](https://greenkeeper.io/)
 
 # Create-Staffbase-SSO-CLI Documentation
 ![Staffbase Logo](https://staffbase.com/wp-content/themes/staffbase-theme/img/logo-blau.svg)
