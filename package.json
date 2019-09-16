@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@staffbase/eslint-config-staffbase": "^0.1.1",
-    "eslint": "^3.19.0",
+    "eslint": "^4.18.2",
     "eslint-config-google": "^0.7.1",
     "highlight.js": "^9.12.0",
     "husky": "^0.13.4",
