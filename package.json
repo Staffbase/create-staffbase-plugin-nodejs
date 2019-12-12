@@ -30,7 +30,7 @@
     "@staffbase/eslint-config-staffbase": "^0.1.1",
     "eslint": "^6.4.0",
     "eslint-config-google": "^0.14.0",
-    "highlight.js": "^9.12.0",
+    "highlight.js": "9.17.0",
     "husky": "^3.0.5",
     "jest": "^24.9.0",
     "markdown-it": "^10.0.0",
