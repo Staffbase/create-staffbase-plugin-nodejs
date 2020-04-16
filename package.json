@@ -27,7 +27,7 @@
     "boolean-negation": true
   },
   "devDependencies": {
-    "@staffbase/eslint-config-staffbase": "^0.1.1",
+    "@staffbase/eslint-config-staffbase": "^1.0.0",
     "eslint": "^6.4.0",
     "eslint-config-google": "^0.14.0",
     "highlight.js": "^9.12.0",
