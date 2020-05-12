@@ -1,16 +1,16 @@
 {
   "name": "@staffbase/create-staffbase-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "bin": "./csss.js",
   "dependencies": {
-    "colors": "^1.1.2",
+    "colors": "^1.4.0",
     "filepath": "^1.1.0",
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^9.0.0",
     "is-relative": "^1.0.0",
     "is-valid-path": "^0.1.1",
     "prompt": "^1.0.0",
     "validate-npm-package-name": "^3.0.0",
-    "yargs": "^14.0.0"
+    "yargs": "^15.3.1"
   },
   "repository": {
     "type": "git",
@@ -27,13 +27,13 @@
     "boolean-negation": true
   },
   "devDependencies": {
-    "@staffbase/eslint-config-staffbase": "^0.1.1",
-    "eslint": "^6.4.0",
+    "@staffbase/eslint-config-staffbase": "^1.0.0",
+    "eslint": "^7.0.0",
     "eslint-config-google": "^0.14.0",
-    "highlight.js": "^9.12.0",
-    "husky": "^3.0.5",
-    "jest": "^24.9.0",
+    "highlight.js": "^10.0.3",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
     "markdown-it": "^10.0.0",
-    "marked": "^0.7.0"
+    "marked": "^1.0.0"
   }
 }
