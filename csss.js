@@ -1,8 +1,8 @@
 #! /usr/bin/env node
 'use strict';
-let fs = require('fs-extra');
-let path = require('path');
-let yargv = require('yargs');
+const fs = require('fs-extra');
+const path = require('path');
+const yargv = require('yargs');
 const validateNPM = require('validate-npm-package-name');
 const execFile = require('child_process').execFile;
 const prompt = require('prompt');
@@ -19,18 +19,18 @@ const defaultNPMName = 'my-staffbase-backend';
 const scaffoldFolder = path.resolve(__dirname, './scaffoldTpl');
 
 yargv
-  .usage('Usage: create-staffbase-sso-server <project-directory> [Options]')
-  .alias('name', 'N')
-  .string('name')
-  .describe('name', 'a sepcific package.json name of your app')
-  .version('0.0.1')
-  .help('help')
-  .epilogue(`for more information,\please see the README at:
+    .usage('Usage: create-staffbase-sso-server <project-directory> [Options]')
+    .alias('name', 'N')
+    .string('name')
+    .describe('name', 'a sepcific package.json name of your app')
+    .version('0.0.1')
+    .help('help')
+    .epilogue(`for more information,\please see the README at:
     http://www.github.com/Staffbase/create-staffbase-sso-server/master/README.MD`);
 // console.log('YARGS Parsed Data:\n', yargv.argv);
-let packageJSON = fs.readJSONSync(path.join(scaffoldFolder, 'package.json'));
+const packageJSON = fs.readJSONSync(path.join(scaffoldFolder, 'package.json'));
 // Defaults package name to current folder name
-let nameParam = yargv.argv.N || yargv.argv.name || defaultNPMName;
+const nameParam = yargv.argv.N || yargv.argv.name || defaultNPMName;
 prompt.override = {
   name: yargv.argv.N,
   path: yargv.argv._[0],
@@ -57,12 +57,12 @@ function promptName(name) {
   };
   return new Promise(function(resolve, reject) {
     prompt.start()
-    .get(namePromptSchema, function(err, res) {
-      if (err) {
-        return reject(err);
-      }
-      return resolve(res);
-    });
+        .get(namePromptSchema, function(err, res) {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(res);
+        });
   });
 }
 /**
@@ -85,8 +85,8 @@ function promptPath(promtedName) {
       },
       override: {
         message:
-          colors.yellow('The directory you specified already exists. It directory will be overridden!')
-            + '\nDo you wish to proceed (y)es|(n)o?',
+          colors.yellow('The directory you specified already exists. It directory will be overridden!') +
+            '\nDo you wish to proceed (y)es|(n)o?',
         validator: /y[es]*|n[o]?/,
         warning: 'Must respond yes or no',
         default: 'yes',
@@ -130,14 +130,14 @@ function copyContents(dstDir) {
  */
 function replacePackageJSON(dstPath, nameVal) {
   // console.log("replacePackageJSON");
-  let newPackageJSON = Object.assign({}, packageJSON, {name: nameVal});
+  const newPackageJSON = Object.assign({}, packageJSON, {name: nameVal});
   const curDir = path.resolve(dstPath);
   const packagePath = path.resolve(path.join(curDir, 'package.json'));
   return fs.remove(packagePath)
-  .then(function(data) {
-    // console.log(colors.yellow('Writing json...'));
-    return fs.writeJson(packagePath, newPackageJSON, {spaces: 2});
-  });
+      .then(function(data) {
+        // console.log(colors.yellow('Writing json...'));
+        return fs.writeJson(packagePath, newPackageJSON, {spaces: 2});
+      });
 }
 /**
  * Installs the node modules in the folder where the template was created.
@@ -168,71 +168,71 @@ function installDeps(dstPath) {
  * rejected when there is an errer in removing the directory.
  */
 function removeExistingFolder(dstPath) {
-  let fp = filepath.create(dstPath);
+  const fp = filepath.create(dstPath);
   if (fp.exists()) {
     return fs.remove(fp.toString())
-      .then(function() {
-        console.log(colors.red('Removing existing folder and its contents...'));
-        return dstPath;
-      });
+        .then(function() {
+          console.log(colors.red('Removing existing folder and its contents...'));
+          return dstPath;
+        });
   } else {
     return Promise.resolve(dstPath);
   }
 }
 // Run the promise chain for the whole process
-let promptRes = {};
+const promptRes = {};
 // promot package name
 promptName(nameParam)
 // prompt file path
-.then(function(pathResp) {
-  const nameRecv = pathResp.name;
-  Object.assign(promptRes, pathResp);
-  return promptPath(nameRecv);
-})
+    .then(function(pathResp) {
+      const nameRecv = pathResp.name;
+      Object.assign(promptRes, pathResp);
+      return promptPath(nameRecv);
+    })
 // remove the folder if it exists
-.then(function(pathResp) {
-  if (pathResp.override === 'n' || pathResp.override === 'no') {
-    return Promise.reject(console.log(colors.green('Good Bye!')));
-  }
-  Object.assign(promptRes, pathResp);
-  let pathRecv = pathResp.path;
-  // if the entered path is relative, resolve to absolute
-  if (isRelativePath(pathRecv)) {
-    pathRecv = path.resolve(path.join(process.cwd(), pathRecv));
-    promptRes.path = pathRecv;
-  }
-  return removeExistingFolder(pathRecv);
-})
+    .then(function(pathResp) {
+      if (pathResp.override === 'n' || pathResp.override === 'no') {
+        return Promise.reject(console.log(colors.green('Good Bye!')));
+      }
+      Object.assign(promptRes, pathResp);
+      let pathRecv = pathResp.path;
+      // if the entered path is relative, resolve to absolute
+      if (isRelativePath(pathRecv)) {
+        pathRecv = path.resolve(path.join(process.cwd(), pathRecv));
+        promptRes.path = pathRecv;
+      }
+      return removeExistingFolder(pathRecv);
+    })
 // copy contents to folder
-.then((pathRecv) => {
-  return(copyContents(pathRecv));
-})
+    .then((pathRecv) => {
+      return (copyContents(pathRecv));
+    })
 // replace package.json with new one
-.then((res) => {
-  return replacePackageJSON(promptRes.path, promptRes.name);
-})
+    .then((res) => {
+      return replacePackageJSON(promptRes.path, promptRes.name);
+    })
 // install npm dependencies
-.then((res) => {
-  return installDeps(promptRes.path);
-})
+    .then((res) => {
+      return installDeps(promptRes.path);
+    })
 // output end results
-.then(function(npmOutput) {
-  console.log(colors.yellow(npmOutput));
-  console.log(colors.green(`
+    .then(function(npmOutput) {
+      console.log(colors.yellow(npmOutput));
+      console.log(colors.green(`
 Your application setup is complete!
 Please see the generated README.MD file to get more details about next steps.
 You can find your application template in: ${promptRes.path}.
     `));
-})
+    })
 // handle errors if any
-.catch(function(err) {
-  if (err.message === 'canceled') {
-    return console.log(colors.green('\nGood Bye!'));
-  }
-  if (err.message) {
-    console.log('An error occured.', err);
-  }
-});
+    .catch(function(err) {
+      if (err.message === 'canceled') {
+        return console.log(colors.green('\nGood Bye!'));
+      }
+      if (err.message) {
+        console.log('An error occured.', err);
+      }
+    });
 
 module.exports = {
   validatePath: validatePath,
