@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: create-staffbase-plugin-nodejs
+  annotations:
+    github.com/project-slug: Staffbase/create-staffbase-plugin-nodejs
+  tags:
+    - javascript
+spec:
+  type: service
+  lifecycle: production
