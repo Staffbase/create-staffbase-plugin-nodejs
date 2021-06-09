@@ -1,3 +1,5 @@
+# ⚠️ This repo is no longer under active development and archived (read-only)
+
 [![Build Status](https://travis-ci.org/Staffbase/create-staffbase-plugin-nodejs.svg?branch=master)](https://travis-ci.org/Staffbase/create-staffbase-plugin-nodejs) [![Greenkeeper badge](https://badges.greenkeeper.io/Staffbase/create-staffbase-plugin-nodejs.svg)](https://greenkeeper.io/)
 
 # Create-Staffbase-SSO-CLI Documentation
