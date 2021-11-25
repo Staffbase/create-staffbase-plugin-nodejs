@@ -3,10 +3,10 @@ const fs = require('fs-extra');
 const hljs = require('highlight.js');
 
 const md = require('markdown-it')({
-  highlight: function(str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
+  highlight: function(str) {
+    if (str && hljs.getLanguage(str)) {
       try {
-        return hljs.highlight(lang, str, true).value;
+        return hljs.highlight(str, true).value;
       } catch (err) {
         console.log(err);
       }
