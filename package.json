@@ -33,7 +33,7 @@
     "highlight.js": "^10.0.3",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
-    "markdown-it": "^10.0.0",
+    "markdown-it": "^12.3.2",
     "marked": "^1.0.0"
   }
 }
