@@ -58,11 +58,12 @@ app.js
 You can also specify these values using environment variables.
 Refer to the table to see which environment variables can be used.
 
-|   *Value*   |   *Environment Variable*    |
-|:------------|:--------------------------: |
-|Secret       |STAFFBASE_SSO_SECRET         |
-|Audience     |STAFFBASE_SSO_AUDIENCE       |
-|Server Port  |PORT                         |
+|   *Value*     |   *Environment Variable*    |           *Default if not set*           |
+|:--------------|:--------------------------: |:----------------------------------------:|
+|Secret         |STAFFBASE_SSO_SECRET         | *(empty)*                                |
+|Audience       |STAFFBASE_SSO_AUDIENCE       | *(empty)*                                |
+|Server Port    |PORT                         | 3000                                     |
+|Server Address |ADDRESS                      | *(empty, listening on all IP addresses)* |
 
 ## Running the server
 _create-staffbase-plugin_ installs the project dependencies for you.
