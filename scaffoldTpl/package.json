@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@staffbase/staffbase-plugin-sdk": "1.2.0",
+    "@staffbase/staffbase-plugin-sdk": "1.2.2",
     "body-parser": "~1.19.2",
     "cookie-parser": "~1.4.5",
     "debug": "~4.1.1",
