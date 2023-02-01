@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  NPM_TOKEN: ${{ secrets.STAFFBOT_NPM_TOKEN_PACKAGE_READ }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.STAFFBOT_GITHUB_TOKEN }}
 
 jobs:
