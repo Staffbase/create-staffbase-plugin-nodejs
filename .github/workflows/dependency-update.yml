@@ -6,17 +6,17 @@ on:
   workflow_dispatch:
 
 env:
-  NPM_TOKEN: ${{ secrets.STAFFBOT_NPM_TOKEN_PACKAGE_READ }}
-  GITHUB_TOKEN: ${{ secrets.STAFFBOT_GITHUB_TOKEN }}
+  NPM_TOKEN: ${{ secrets.STAFFBOT_NPM_READ }}
+  GITHUB_TOKEN: ${{ secrets.GITOPS_TOKEN }}
 
 jobs:
   npm-audit-fix:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
           persist-credentials: false
-      - uses: Staffbase/npm-audit-fix-action@v4.0.10
+      - uses: Staffbase/npm-audit-fix-action@v3.3.0
         with:
           github_token: ${{ secrets.STAFFBOT_GITHUB_TOKEN }}
           github_user: "Staffbot"
