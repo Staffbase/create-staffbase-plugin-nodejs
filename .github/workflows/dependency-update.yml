@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 env:
-  NPM_TOKEN: ${{ secrets.STAFFBOT_NPM_READ }}
-  GITHUB_TOKEN: ${{ secrets.GITOPS_TOKEN }}
+  NPM_TOKEN: ${{ secrets.STAFFBOT_NPM_TOKEN_PACKAGE_READ }}
+  GITHUB_TOKEN: ${{ secrets.STAFFBOT_GITHUB_TOKEN }}
 
 jobs:
   npm-audit-fix:
