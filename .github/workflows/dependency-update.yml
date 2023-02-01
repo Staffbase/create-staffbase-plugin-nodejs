@@ -21,5 +21,4 @@ jobs:
           github_token: ${{ secrets.STAFFBOT_GITHUB_TOKEN }}
           github_user: "Staffbot"
           github_email: "staffbot@staffbase.com"
-          package_manager: "npm"
           labels: "dependencies, javascript, security, dev"
