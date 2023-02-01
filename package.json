@@ -2,16 +2,6 @@
   "name": "@staffbase/create-staffbase-plugin",
   "version": "1.0.2",
   "bin": "./csss.js",
-  "dependencies": {
-    "colors": "^1.4.0",
-    "filepath": "^1.1.0",
-    "fs-extra": "^9.0.0",
-    "is-relative": "^1.0.0",
-    "is-valid-path": "^0.1.1",
-    "prompt": "^1.0.0",
-    "validate-npm-package-name": "^3.0.0",
-    "yargs": "^15.3.1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Staffbase/create-staffbase-plugin-nodejs"
@@ -26,14 +16,35 @@
     "parse-numbers": true,
     "boolean-negation": true
   },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "filepath": "^1.1.0",
+    "fs-extra": "^9.0.0",
+    "is-relative": "^1.0.0",
+    "is-valid-path": "^0.1.1",
+    "prompt": "^1.0.0",
+    "validate-npm-package-name": "^3.0.0",
+    "yargs": "^15.3.1"
+  },
   "devDependencies": {
-    "@staffbase/eslint-config-staffbase": "^1.0.0",
-    "eslint": "^7.0.0",
+    "@babel/core": "^7.20.12",
+    "@babel/eslint-parser": "^7.0.0",
+    "@emotion/eslint-plugin": "^11.0.0",
+    "@staffbase/eslint-config": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-import-helpers": "^1.1.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-config-google": "^0.14.0",
     "highlight.js": "^10.0.3",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
     "markdown-it": "^12.3.2",
-    "marked": "^4.0.10"
+    "marked": "^4.0.10",
+    "typescript": "^4.9.5"
   }
 }
