@@ -17,6 +17,10 @@ jobs:
       - uses: ybiquitous/npm-audit-fix-action@v4
         with:
           persist-credentials: false
+          github_token: ${{ secrets.STAFFBOT_GITHUB_TOKEN }}
+          github_user: "Staffbot"
+          github_email: "staffbot@staffbase.com"
+          labels: "dependencies, javascript, security, dev"
       - uses: Staffbase/npm-audit-fix-action@v4.0.7
         with:
           github_token: ${{ secrets.STAFFBOT_GITHUB_TOKEN }}
