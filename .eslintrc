@@ -1,5 +1,5 @@
 {
-  "extends": "@staffbase/eslint-config-staffbase",
+  "extends": "@staffbase/eslint-config",
   "parserOptions": {
     "ecmaVersion": 6
   },
