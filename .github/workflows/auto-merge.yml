@@ -1,19 +1,11 @@
-name: Auto Merge
+name: Enable Dependabot Auto-Merge
 
-on:
-  pull_request_target:
+on: pull_request
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
-  auto-merge:
-    name: Merge Automatically
-    runs-on: ubuntu-20.04
-    if: github.actor == 'dependabot[bot]'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Prepare Auto Merge
-        uses: ahmadnassri/action-dependabot-auto-merge@v2
-        with:
-          target: minor
-          github-token: ${{ secrets.GITOPS_TOKEN }}
+  dependabot:
+    uses: Staffbase/gha-workflows/.github/workflows/template_automerge_dependabot.yml@v3.0.0
