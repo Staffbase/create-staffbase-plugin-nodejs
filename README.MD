@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/Staffbase/create-staffbase-plugin-nodejs.svg?branch=master)](https://travis-ci.org/Staffbase/create-staffbase-plugin-nodejs) [![Greenkeeper badge](https://badges.greenkeeper.io/Staffbase/create-staffbase-plugin-nodejs.svg)](https://greenkeeper.io/)
-
 # Create-Staffbase-SSO-CLI Documentation
 ![Staffbase Logo](https://staffbase.com/wp-content/themes/staffbase-theme/img/logo-blau.svg)
 ## Getting started
@@ -73,3 +71,22 @@ folder where your app was generated and start the express server.
 $ cd [path of generated app]
 $ npm start
 ```
+
+## License
+
+Copyright 2017-2023 Staffbase GmbH.
+
+Licensed under the Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0
+
+<table>
+  <tr>
+    <td>
+      <img src="docs/assets/images/staffbase.png" alt="Staffbase GmbH" width="96" />
+    </td>
+    <td>
+      <b>Staffbase GmbH</b>
+      <br />Staffbase is an internal communications platform built to revolutionize the way you work and unite your company. Staffbase is hiring: <a href="https://jobs.staffbase.com" target="_blank" rel="noreferrer">jobs.staffbase.com</a>
+      <br /><a href="https://github.com/Staffbase" target="_blank" rel="noreferrer">GitHub</a> | <a href="https://staffbase.com/" target="_blank" rel="noreferrer">Website</a> | <a href="https://jobs.staffbase.com" target="_blank" rel="noreferrer">Jobs</a>
+    </td>
+  </tr>
+</table>

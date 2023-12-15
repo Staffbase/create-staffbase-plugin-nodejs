@@ -26,7 +26,7 @@ yargv
     .version('0.0.1')
     .help('help')
     .epilogue(`for more information,\please see the README at:
-    http://www.github.com/Staffbase/create-staffbase-sso-server/master/README.MD`);
+    https://github.com/Staffbase/create-staffbase-plugin-nodejs/blob/master/README.MD`);
 // console.log('YARGS Parsed Data:\n', yargv.argv);
 const packageJSON = fs.readJSONSync(path.join(scaffoldFolder, 'package.json'));
 // Defaults package name to current folder name

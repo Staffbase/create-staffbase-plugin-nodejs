@@ -33,15 +33,3 @@ updates:
     registries:
       - npm-github
 
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "daily"
-      time: "08:00"
-      timezone: "Europe/Berlin"
-    target-branch: "master"
-    open-pull-requests-limit: 5
-    labels:
-      - "docker dependency"
-    reviewers:
-      - "maximizeIT"
