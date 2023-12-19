@@ -1,6 +1,6 @@
 {
   "name": "@staffbase/create-staffbase-plugin",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "bin": "./csss.js",
   "repository": {
     "type": "git",
