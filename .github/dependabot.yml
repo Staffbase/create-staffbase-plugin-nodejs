@@ -17,6 +17,15 @@ updates:
       - "github dependency"
     reviewers:
       - "maximizeIT"
+    commit-message:
+      prefix: chore(deps)
+    groups:
+      ga-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   - package-ecosystem: "npm"
     directory: "/"
@@ -32,4 +41,12 @@ updates:
       - "maximizeIT"
     registries:
       - npm-github
-
+    commit-message:
+      prefix: chore(deps)
+    groups:
+      npm-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
