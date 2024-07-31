@@ -1,5 +1,5 @@
 # Shared
-.github/CODEOWNERS      @Staffbase/cc-tech
+.github/CODEOWNERS      @Staffbase/cc-tech @Staffbase/cs-tech
 
 # Global
 *                       @maximizeIT
