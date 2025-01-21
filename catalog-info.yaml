@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: create-staffbase-plugin-nodejs
+  description: Node.js plugin skeleton generator provided by Staffbase
+  annotations:
+    github.com/project-slug: Staffbase/create-staffbase-plugin-nodejs
+    jfrog-artifactory/image-name: create-staffbase-plugin-nodejs
+  tags:
+    - js
+    - nodejs
+spec:
+  type: service
+  lifecycle: production
