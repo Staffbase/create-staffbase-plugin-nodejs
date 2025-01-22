@@ -1,5 +1,6 @@
 # Create-Staffbase-SSO-CLI Documentation
 ![Staffbase Logo](https://staffbase.com/wp-content/themes/staffbase-theme/img/logo-blau.svg)
+
 ## Getting started
 Install the package in your global namespace and then run the command.
 
@@ -15,6 +16,7 @@ Example:
 ```bash
 $ yarn create @staffbase/staffbase-plugin /home/user1/work/staffbase-server/ --name staffbase-sso-server
 ```
+
 ## Interactive Mode
 You can also run the command without passing any arguments to get into interactive
 mode which would ask you the name of your app and the path where it need to be installed.
@@ -74,7 +76,7 @@ $ npm start
 
 ## License
 
-Copyright 2017-2024 Staffbase GmbH.
+Copyright 2017-2025 Staffbase SE.
 
 Licensed under the Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -84,9 +86,9 @@ Licensed under the Apache License, Version 2.0: https://www.apache.org/licenses/
       <img src="docs/assets/images/staffbase.png" alt="Staffbase GmbH" width="96" />
     </td>
     <td>
-      <b>Staffbase GmbH</b>
-      <br />Staffbase is an internal communications platform built to revolutionize the way you work and unite your company. Staffbase is hiring: <a href="https://jobs.staffbase.com" target="_blank" rel="noreferrer">jobs.staffbase.com</a>
-      <br /><a href="https://github.com/Staffbase" target="_blank" rel="noreferrer">GitHub</a> | <a href="https://staffbase.com/" target="_blank" rel="noreferrer">Website</a> | <a href="https://jobs.staffbase.com" target="_blank" rel="noreferrer">Jobs</a>
+      <b>Staffbase SE</b>
+      <br />Staffbase is an internal communications platform built to revolutionize the way you work and unite your company. Staffbase is hiring: <a href="https://staffbase.com/jobs/" target="_blank" rel="noreferrer">https://staffbase.com/jobs</a>
+      <br /><a href="https://github.com/Staffbase" target="_blank" rel="noreferrer">GitHub</a> | <a href="https://staffbase.com/" target="_blank" rel="noreferrer">Website</a> | <a href="https://staffbase.com/jobs/" target="_blank" rel="noreferrer">Jobs</a>
     </td>
   </tr>
 </table>
