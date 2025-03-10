@@ -4,7 +4,8 @@ on:
     types: [created]
 
 permissions:
-  contents: write  # we need to read secrets
+  contents: read  # we need to read secrets
+  id-token: write
   
 jobs:
   build:
@@ -17,6 +18,6 @@ jobs:
         with:
           registry-url: 'https://registry.npmjs.org'
       - name: Publish package on NPM 📦
-        run: npm publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
