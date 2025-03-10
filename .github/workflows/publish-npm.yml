@@ -2,6 +2,10 @@ name: Publish to NPM Registry
 on:
   release:
     types: [created]
+
+permissions:
+  contents: write  # we need to read secrets
+  
 jobs:
   build:
     runs-on: ubuntu-latest
