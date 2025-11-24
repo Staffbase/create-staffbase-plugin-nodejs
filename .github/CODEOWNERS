@@ -1,9 +1,1 @@
-# Shared
-.github/CODEOWNERS      @Staffbase/cs-tech
-
-# Global
-*                       @maximizeIT
-
-# Misc
-package.json            @maximizeIT
-yarn.lock               @maximizeIT
+*   @Staffbase/cs-tech
