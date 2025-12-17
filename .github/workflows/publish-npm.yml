@@ -4,9 +4,9 @@ on:
     types: [created]
 
 permissions:
-  contents: read  # we need to read secrets
+  contents: read # we need to read secrets
   id-token: write
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,8 +16,6 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
       - name: Publish package on NPM 📦
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
