@@ -1,6 +1,6 @@
 {
   "name": "@staffbase/create-staffbase-plugin",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "bin": {
     "create-staffbase-plugin": "csss.js"
   },
