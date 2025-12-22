@@ -1,9 +1,4 @@
 version: 2
-registries:
-  npm-github:
-    type: npm-registry
-    url: https://npm.pkg.github.com
-    token: ${{secrets.STAFFBOT_NPM_READ}}
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -39,8 +34,6 @@ updates:
       - "npm dependency"
     reviewers:
       - "maximizeIT"
-    registries:
-      - npm-github
     commit-message:
       prefix: chore(deps)
     groups:
