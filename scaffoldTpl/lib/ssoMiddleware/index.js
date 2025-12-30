@@ -25,8 +25,8 @@ function ssoMiddleWare(secret) {
         req.sbSSO = tokenData;
         console.log("TokenData:", tokenData);
         return next();
-      } catch (error_) {
-        console.log("Error decoding token:", error_);
+      } catch (err) {
+        console.log("Error decoding token:", err);
         return next();
       }
     }
