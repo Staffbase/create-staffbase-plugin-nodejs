@@ -2,7 +2,7 @@
 'use strict';
 const fs = require('fs-extra');
 const path = require('path');
-const yargv = require('yargs');
+const yargs = require('yargs');
 const validateNPM = require('validate-npm-package-name');
 const execFile = require('child_process').execFile;
 const prompt = require('prompt');
@@ -18,7 +18,7 @@ prompt.delimiter = colors.green(':');
 const defaultNPMName = 'my-staffbase-backend';
 const scaffoldFolder = path.resolve(__dirname, './scaffoldTpl');
 
-yargv
+const yargv = yargs(process.argv.slice(2))
     .usage('Usage: create-staffbase-sso-server <project-directory> [Options]')
     .alias('name', 'N')
     .string('name')
