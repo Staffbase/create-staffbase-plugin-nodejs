@@ -22,7 +22,7 @@ console.log("Generating HTML Getting started from README.MD");
 console.log("Reading from:", input);
 fs.readFile(input)
   .then((inputStr) => {
-    // TODO Add better css in the genreated html
+    // TODO Add better css in the generated html
     const outStr = md.render(inputStr.toString());
     return fs.outputFile(output, outStr);
   })
