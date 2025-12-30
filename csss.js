@@ -24,15 +24,17 @@ const yargv = yargs(process.argv.slice(2))
   .string("name")
   .describe("name", "a specific package.json name of your app")
   .version("0.0.1")
-  .help("help").epilogue(`for more information,\please see the README at:
-    https://github.com/Staffbase/create-staffbase-plugin-nodejs/blob/main/README.MD`);
-// console.log('YARGS Parsed Data:\n', yargv.argv);
+  .help("help")
+  .epilogue(`for more information,\please see the README at:
+    https://github.com/Staffbase/create-staffbase-plugin-nodejs/blob/main/README.MD`)
+  .argv;
+// console.log('YARGS Parsed Data:\n', yargv);
 const packageJSON = fs.readJSONSync(path.join(scaffoldFolder, "package.json"));
 // Defaults package name to current folder name
-const nameParam = yargv.argv.N || yargv.argv.name || defaultNPMName;
+const nameParam = yargv.N || yargv.name || defaultNPMName;
 prompt.override = {
-  name: yargv.argv.N,
-  path: yargv.argv._[0],
+  name: yargv.N,
+  path: yargv._[0],
 };
 /**
  * Prompts user for just the npm name value.
