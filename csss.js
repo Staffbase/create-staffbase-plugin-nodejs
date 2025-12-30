@@ -84,7 +84,7 @@ function promptPath(promtedName) {
       override: {
         message:
           colors.yellow(
-            "The directory you specified already exists. It directory will be overridden!"
+            "The directory you specified already exists. The directory will be overridden!"
           ) + "\nDo you wish to proceed (y)es|(n)o?",
         validator: /y[es]*|n[o]?/,
         warning: "Must respond yes or no",
