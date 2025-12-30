@@ -1,5 +1,5 @@
 # Create-Staffbase-SSO-CLI Documentation
-![Staffbase Logo](https://staffbase.com/wp-content/themes/staffbase-theme/img/logo-blau.svg)
+<img src="docs/assets/images/staffbase.png" alt="Staffbase SE" width="96" />
 
 ## Getting started
 Install the package in your global namespace and then run the command.
@@ -83,7 +83,7 @@ Licensed under the Apache License, Version 2.0: https://www.apache.org/licenses/
 <table>
   <tr>
     <td>
-      <img src="docs/assets/images/staffbase.png" alt="Staffbase GmbH" width="96" />
+      <img src="docs/assets/images/staffbase.png" alt="Staffbase SE" width="96" />
     </td>
     <td>
       <b>Staffbase SE</b>

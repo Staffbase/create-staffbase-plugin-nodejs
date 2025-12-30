@@ -1,5 +1,3 @@
-![Staffbase Logo](https://staffbase.com/wp-content/themes/staffbase-theme/img/logo-blau.svg)
-
 Welcome to your Staffbase SSO plugin server. Please follow the following instructions
 to get started with your Plugin Application.
 
