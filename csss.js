@@ -229,7 +229,7 @@ You can find your application template in: ${promptRes.path}.
       return console.log(colors.green("\nGood Bye!"));
     }
     if (err.message) {
-      console.log("An error occured.", err);
+      console.log("An error occurred.", err);
     }
   });
 
