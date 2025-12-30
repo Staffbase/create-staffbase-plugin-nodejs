@@ -112,7 +112,7 @@ function promptPath(promtedName) {
 }
 
 /**
- * Copy contants from the Scaffold Template to the specified folder
+ * Copy contents from the Scaffold Template to the specified folder
  * @param  {String} dstDir The destination directory where files are to be copied
  * @return {Promise}    Promise resolved when the copy process is complete. Rejected
  * if there is some error in copying files.
