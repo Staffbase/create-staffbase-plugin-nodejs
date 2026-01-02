@@ -1,7 +1,6 @@
-const StaffBaseSSO = require('staffbase-sso').sso;
-const helpers = require('staffbase-sso').helpers;
-const staffbaseSSO1 = require('staffbase-sso');
-const TOKEN_QUERY_PARAM = 'jwt';
+const StaffBaseSSO = require("staffbase-sso").sso;
+const helpers = require("staffbase-sso").helpers;
+const TOKEN_QUERY_PARAM = "jwt";
 
 function ssoMiddleWare(secret) {
   secret = secret || process.env.STAFFBASE_SSO_SECRET;
@@ -10,24 +9,24 @@ function ssoMiddleWare(secret) {
   try {
     formattedSecret = helpers.transformKeyToFormat(secret);
   } catch (err) {
-    console.log('Unable to transform key to right format.', err);
+    console.log("Unable to transform key to right format.", err);
     formattedSecret = null;
   }
-  return function(req, res, next) {
+  return function (req, res, next) {
     if (!formattedSecret) {
-      console.log('Unsupported secret.');
+      console.log("Unsupported secret.");
       return next();
     }
     if (req.query[TOKEN_QUERY_PARAM]) {
       let token = req.query[TOKEN_QUERY_PARAM];
       try {
-      	let SSOContents = new StaffBaseSSO(formattedSecret, token);
-      	let tokenData = SSOContents.getTokenData();
+        let SSOContents = new StaffBaseSSO(formattedSecret, token);
+        let tokenData = SSOContents.getTokenData();
         req.sbSSO = tokenData;
-        console.log('TokenData:', tokenData);
+        console.log("TokenData:", tokenData);
         return next();
-      } catch(tokenErr) {
-      	console.log('Error decoding token:', tokenErr);
+      } catch (err) {
+        console.log("Error decoding token:", err);
         return next();
       }
     }
