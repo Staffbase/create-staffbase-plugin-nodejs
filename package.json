@@ -26,14 +26,14 @@
     "is-relative": "^1.0.0",
     "is-valid-path": "^0.1.1",
     "prompt": "^1.0.0",
-    "validate-npm-package-name": "^7.0.1",
+    "validate-npm-package-name": "^7.0.2",
     "yargs": "^18.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@babel/eslint-parser": "^7.28.5",
-    "@typescript-eslint/eslint-plugin": "^8.51.0",
-    "@typescript-eslint/parser": "^8.51.0",
+    "@typescript-eslint/eslint-plugin": "^8.52.0",
+    "@typescript-eslint/parser": "^8.52.0",
     "eslint": "^9.39.2",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^9.1.0",
