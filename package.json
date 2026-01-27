@@ -19,32 +19,35 @@
     "parse-numbers": true,
     "boolean-negation": true
   },
+  "resolutions": {
+    "lodash": "4.17.23"
+  },
   "dependencies": {
     "colors": "^1.4.0",
     "filepath": "^1.1.0",
-    "fs-extra": "^9.0.0",
+    "fs-extra": "^11.3.3",
     "is-relative": "^1.0.0",
     "is-valid-path": "^0.1.1",
     "prompt": "^1.0.0",
-    "validate-npm-package-name": "^7.0.1",
+    "validate-npm-package-name": "^7.0.2",
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.5",
-    "@babel/eslint-parser": "^7.28.5",
-    "@typescript-eslint/eslint-plugin": "^8.51.0",
-    "@typescript-eslint/parser": "^8.51.0",
+    "@babel/core": "^7.28.6",
+    "@babel/eslint-parser": "^7.28.6",
+    "@typescript-eslint/eslint-plugin": "^8.53.0",
+    "@typescript-eslint/parser": "^8.53.0",
     "eslint": "^9.39.2",
     "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "highlight.js": "^11.11.1",
     "husky": "^9.1.7",
-    "jest": "^29.7.0",
-    "markdown-it": "^12.3.2",
-    "marked": "^4.0.10",
+    "jest": "^30.2.0",
+    "markdown-it": "^14.1.0",
+    "marked": "^17.0.1",
     "typescript": "^5.9.3"
   }
 }
