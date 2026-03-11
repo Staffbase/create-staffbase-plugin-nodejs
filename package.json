@@ -25,7 +25,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "filepath": "^1.1.0",
-    "fs-extra": "^11.3.3",
+    "fs-extra": "^11.3.4",
     "is-relative": "^1.0.0",
     "is-valid-path": "^0.1.1",
     "prompt": "^1.0.0",
