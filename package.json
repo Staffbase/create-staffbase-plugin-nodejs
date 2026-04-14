@@ -46,12 +46,12 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-simple-import-sort": "^13.0.0",
     "highlight.js": "^11.11.1",
     "husky": "^9.1.7",
     "jest": "^30.3.0",
     "markdown-it": "^14.1.1",
-    "marked": "^17.0.6",
-    "typescript": "^5.9.3"
+    "marked": "^18.0.0",
+    "typescript": "^6.0.2"
   }
 }
