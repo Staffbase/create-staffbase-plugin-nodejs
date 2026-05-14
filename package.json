@@ -1,6 +1,6 @@
 {
   "name": "@staffbase/create-staffbase-plugin",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "license": "MIT",
   "bin": {
     "create-staffbase-plugin": "csss.js"
