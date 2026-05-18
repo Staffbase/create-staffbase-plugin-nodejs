@@ -33,7 +33,7 @@
     "is-relative": "^1.0.0",
     "is-valid-path": "^0.1.1",
     "prompt": "^1.0.0",
-    "validate-npm-package-name": "^7.0.2",
+    "validate-npm-package-name": "^8.0.0",
     "yargs": "^18.0.0"
   },
   "devDependencies": {
