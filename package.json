@@ -39,8 +39,8 @@
   "devDependencies": {
     "@babel/core": "^7.29.0",
     "@babel/eslint-parser": "^7.28.6",
-    "@typescript-eslint/eslint-plugin": "^8.59.3",
-    "@typescript-eslint/parser": "^8.59.3",
+    "@typescript-eslint/eslint-plugin": "^8.59.4",
+    "@typescript-eslint/parser": "^8.59.4",
     "eslint": "^9.39.2",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^10.1.8",
@@ -51,7 +51,7 @@
     "husky": "^9.1.7",
     "jest": "^30.4.2",
     "markdown-it": "^14.1.1",
-    "marked": "^18.0.3",
+    "marked": "^18.0.4",
     "typescript": "^6.0.3"
   }
 }
