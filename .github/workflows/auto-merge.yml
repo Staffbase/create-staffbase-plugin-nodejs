@@ -6,5 +6,5 @@ jobs:
   dependabot:
     uses: Staffbase/gha-workflows/.github/workflows/template_automerge_dependabot.yml@v14.0.1
     secrets:
-      app_id: ${{ vars.STAFFBASE_ACTIONS_APP_ID }}
+      client_id: ${{ vars.STAFFBASE_ACTIONS_CLIENT_ID }}
       private_key: ${{ secrets.STAFFBASE_ACTIONS_PRIVATE_KEY }}
