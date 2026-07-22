@@ -25,7 +25,7 @@
     "glob/minimatch": "9.0.9",
     "@typescript-eslint/typescript-estree/minimatch": "10.2.4",
     "picomatch": "4.0.4",
-    "js-yaml": "4.2.0",
+    "js-yaml": "4.3.0",
     "ajv": "6.15.0"
   },
   "dependencies": {
