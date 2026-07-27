@@ -3,9 +3,10 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
       time: "08:00"
       timezone: "Europe/Berlin"
+      day: monday
     cooldown:
       default-days: 7
     target-branch: "main"
@@ -23,13 +24,13 @@ updates:
         update-types:
           - "minor"
           - "patch"
-
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
       time: "08:00"
       timezone: "Europe/Berlin"
+      day: monday
     cooldown:
       default-days: 7
     target-branch: "main"
