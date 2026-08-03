@@ -32,18 +32,18 @@
   "dependencies": {
     "colors": "^1.4.0",
     "filepath": "^1.1.0",
-    "fs-extra": "^11.3.6",
+    "fs-extra": "^11.4.0",
     "is-relative": "^1.0.0",
     "is-valid-path": "^0.1.1",
     "prompt": "^1.0.0",
     "validate-npm-package-name": "^8.0.0",
-    "yargs": "^18.0.0"
+    "yargs": "^18.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
     "@babel/eslint-parser": "^7.29.7",
-    "@typescript-eslint/eslint-plugin": "^8.64.0",
-    "@typescript-eslint/parser": "^8.64.0",
+    "@typescript-eslint/eslint-plugin": "^8.65.0",
+    "@typescript-eslint/parser": "^8.65.0",
     "eslint": "^9.39.2",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^10.1.8",
@@ -54,7 +54,7 @@
     "husky": "^9.1.7",
     "jest": "^30.4.2",
     "markdown-it": "^14.3.0",
-    "marked": "^18.0.6",
+    "marked": "^18.0.7",
     "typescript": "^6.0.3"
   }
 }
