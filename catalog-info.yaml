@@ -5,6 +5,7 @@ metadata:
   description: Node.js plugin skeleton generator provided by Staffbase
   annotations:
     github.com/project-slug: Staffbase/create-staffbase-plugin-nodejs
+    github.com/team-slug: Staffbase/product-actions
     jfrog-artifactory/image-name: create-staffbase-plugin-nodejs
   tags:
     - js
@@ -12,3 +13,4 @@ metadata:
 spec:
   type: service
   lifecycle: production
+  owner: group:default/product-actions
